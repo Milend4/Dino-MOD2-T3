@@ -1,6 +1,6 @@
 import pygame
  
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
+from utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
 from dino_runner.components.dinosaur import Dinosaur
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
 from dino_runner.utils.text_utils import draw_message_component
@@ -8,9 +8,10 @@ from dino_runner.components.powerups.power_up_manager import PowerUpManager
 
 class Game:
     def __init__(self):
+        pygame.font.init()
         pygame.display.set_caption(TITLE)
         pygame.display.set_icon(ICON)
-        self.screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))
+        self.screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT))#essas são as dimesões da tela
         self.clock = pygame.time.Clock()
         self.playing = False
         self.running = False
@@ -19,7 +20,7 @@ class Game:
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 300 
-        self.player =Dinosaur()
+        self.player = Dinosaur()
         self.obstacle_manager = ObstacleManager()
         self.power_up_manager = PowerUpManager()
  
@@ -28,6 +29,8 @@ class Game:
         while self.running:
             if not self.playing:
                 self.show_menu()
+            else:
+                self.handle_events_on_menu()
         pygame.display.quit()
         pygame.quit()
   
@@ -47,6 +50,10 @@ class Game:
             if event.type == pygame.QUIT:
                 self.playing = False
                 self.running = False
+            elif event.type == pygame.KEYDOWN:  
+                self.playing = True 
+                self.running = True
+        
    
     def update(self):
         user_input = pygame.key.get_pressed()
@@ -62,7 +69,7 @@ class Game:
    
     def draw(self):
         self.clock.tick(FPS)
-        self.screen.fill((225, 225, 225))
+        self.screen.fill((225, 225, 225))#define o fundo de tela
         self.draw_background()
         self.player.draw(self.screen)
         self.obstacle_manager.draw(self.screen)
@@ -85,8 +92,8 @@ class Game:
         draw_message_component(
             f"Pontuação:{self.score}",
             self.screen,
-            pos_x_center= 1000,
-            pos_y_center= 50
+            pos_x_center = 1000,
+            pos_y_center = 50
         )   
   
     def draw_power_up_time(self):
@@ -96,9 +103,9 @@ class Game:
                 draw_message_component(
                     f"{self.player.type.capitalizer()} faltam {time_to_show} segundos",
                     self.screen,
-                    font_size= 18,
-                    pos_x_center= 500,
-                    pos_y_center= 40
+                    font_size = 18,
+                    pos_x_center = 500,
+                    pos_y_center = 40
                 )
             else:
                 self.player.has_power_up = False
@@ -121,3 +128,12 @@ class Game:
             self.screen.blit(ICON,(half_screen_widht - 40, half_screen_height - 30))
         pygame.display.flip()
         self.handle_events_on_menu()
+
+    def handle_events_on_menu(self):
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                self.running = False
+            elif event.type == pygame.KEYDOWN:  
+                self.playing = True 
+
+     
