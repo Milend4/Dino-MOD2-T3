@@ -12,13 +12,21 @@ IMG_DIR = os.path.join(os.path.dirname(__file__), "..", "assets")
 ICON = pygame.image.load(os.path.join(IMG_DIR, "DinoWallpaper.png"))
 
 RUNNING = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_00.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_01.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_02.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_03.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_04.png")),    
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_05.png")),
 ]
 
 RUNNING_SHIELD = [
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun1Shield.png")),
-    pygame.image.load(os.path.join(IMG_DIR, "Dino/DinoRun2.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_06.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_07.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_08.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_09.png")),
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_10.png")),    
+    pygame.image.load(os.path.join(IMG_DIR, "Dino/Sprite_11.png")),
 ]
 
 RUNNING_HAMMER = [
