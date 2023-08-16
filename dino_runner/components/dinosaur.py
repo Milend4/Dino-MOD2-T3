@@ -40,8 +40,8 @@ class Dinosaur(Sprite):
         self.show_text = False
         self.shield_time_up = 0
 
-    def update (self, user_input):
-        if self.run:
+    def update(self, user_input):
+        if self.dino_run:
             self.run()
         elif self.dino_jump:
             self.jump()
@@ -52,7 +52,7 @@ class Dinosaur(Sprite):
             self.dino_duck = False
             self.dino_jump = True
         elif user_input[pygame.K_DOWN] and not self.dino_jump:
-            self.run = False
+            self.dino_run = False
             self.dino_duck = True
             self.dino_jump = False
         elif not self.dino_jump and not self.dino_duck:
@@ -75,7 +75,7 @@ class Dinosaur(Sprite):
             self.dino_rect.y -= self.jump_vel * 4
             self.jump_vel -= 0.8
         if self.jump_vel < 0:
-            self.dino_rect.y = Y_POS
+            self.dino_rect.y = Y_POS 
             self.dino_jump = False
             self.jump_vel = JUMP_VEL
 
@@ -88,7 +88,7 @@ class Dinosaur(Sprite):
         self.dino_duck = False
     
     def draw(self, screen):
-        screen.blit(self.image,(self.dino_rect.x, self.dino_rect.y))
+        screen.blit(self.image, (self.dino_rect.x, self.dino_rect.y))
 
 
 
