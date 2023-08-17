@@ -1,26 +1,14 @@
 import pygame
 
- 
-
 from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS, DEFAULT_TYPE
-
- 
 
 from dino_runner.components.dinosaur import Dinosaur
 
- 
-
 from dino_runner.components.obstacles.obstacle_manager import ObstacleManager
-
- 
 
 from dino_runner.utils.text_utils import draw_message_component
 
- 
-
 from dino_runner.components.powerups.power_up_manager import PowerUpManager
-
- 
 
 class Game:
 
@@ -56,9 +44,6 @@ class Game:
 
         self.power_up_manager = PowerUpManager()
 
-    
-
- 
 
     def execute(self):
 
@@ -73,8 +58,6 @@ class Game:
         pygame.display.quit()
 
         pygame.quit()
-
- 
 
     def run(self):
 
@@ -96,8 +79,6 @@ class Game:
 
             self.draw()
 
- 
-
     def events(self):
 
         for event in pygame.event.get():
@@ -107,8 +88,6 @@ class Game:
                self.playing = False
 
                self.running = False
-
- 
 
     def update(self):
 
@@ -122,7 +101,6 @@ class Game:
 
         self.power_up_manager.update(self.score, self.game_speed, self.player)
 
-    
 
     def update_score(self):
 
@@ -131,8 +109,6 @@ class Game:
         if self.score % 100 == 0:
 
            self.game_speed += 5
-
- 
 
     def draw(self):
 
@@ -156,8 +132,6 @@ class Game:
 
         pygame.display.flip()
 
- 
-
     def draw_background(self):
         image_width = BG.get_width()
         self.screen.blit(BG, (self.x_pos_bg, self.y_pos_bg))
@@ -180,8 +154,6 @@ class Game:
             pos_y_center = 50
 
         )
-
- 
 
     def draw_power_up_time(self):
 
@@ -245,48 +217,28 @@ class Game:
 
         half_scree_width = SCREEN_WIDTH // 2
 
-        
-
-      
-
         if self.death_count == 0:
-
-            
-
            draw_message_component("APERTE QUALQUER TECLA PARA INICIAR", self.screen, pos_x_center = half_screen_height + 240, pos_y_center= half_scree_width - 300 )
 
         else:
 
            draw_message_component("APERTE QUALQUER TECLA PARA REINICIAR", self.screen, pos_x_center = half_screen_height + 240, pos_y_center= half_scree_width - 300)
-
-           
-
            draw_message_component(
-
                f"SUA PONTUAÇÃO: {self.score}",
 
                self.screen,
 
                pos_y_center = half_scree_width - 150
-
             )
-
            
-
            draw_message_component(
-
                 f"Death count: {self.death_count}",
 
                 self.screen,
 
                 pos_y_center = half_screen_height - 100
-
             )
-
-           
-
         self.screen.blit(ICON, ( half_scree_width - 40, half_screen_height - 30))
-
 
         pygame.display.flip()
         self.handle_events_on_menu()

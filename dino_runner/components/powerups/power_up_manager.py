@@ -27,16 +27,11 @@ class PowerUpManager:
                 player.type = power_up.type
                 player.power_up_time = power_up.start_time + (power_up.duration * 1000) # contagem de pontuação
                 self.power_ups.remove(power_up) 
-
-   
-
     def draw(self, screen): 
 
         for power_up in self.power_ups:
 
             power_up.draw(screen)                  
-
- 
 
     def reset_power_ups(self): 
 
