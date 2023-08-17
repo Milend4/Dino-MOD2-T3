@@ -5,10 +5,11 @@ from dino_runner.utils.constants import SCREEN_WIDTH, SCREEN_HEIGHT
 class Obstacle(Sprite):
 
     def __init__(self, image, type):
-        super().__init__()
         self.image = image
-        self.rect = self.image.get_rect()
-        self.mask = pygame.mask.from_surface(self.image)
+        self.type = type
+        self.rect = self.image[self.type].get_rect()
+        self.rect.x = SCREEN_WIDTH 
+        self.rect.y = SCREEN_HEIGHT + 100
         
     
     def update(self, game_speed, obstacles): 

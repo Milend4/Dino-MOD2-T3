@@ -24,7 +24,6 @@ class Dinosaur(Sprite):
     def __init__(self):
         self.type = DEFAULT_TYPE
         self.image = RUN_IMG[self.type][0]
-        self.image = pygame.transform.scale(self.image, (32*16, 32*16))
         self.dino_rect = self.image.get_rect()
         self.dino_rect.x = X_POS
         self.dino_rect.y = Y_POS

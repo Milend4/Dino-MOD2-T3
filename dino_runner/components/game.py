@@ -242,8 +242,4 @@ class Game:
 
         pygame.display.flip()
         self.handle_events_on_menu()
-
-
-
-
      
